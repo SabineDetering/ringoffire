@@ -1,0 +1,38 @@
+.start-screen{
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../assets/img/wood.jpg'), #564946;
+    background-blend-mode:overlay ;
+    img{
+        height: 100vh;
+        // object-position: 90%;
+    }
+}
+
+.start-sign{
+    position: absolute;
+    // left:0;
+    // right:0;
+    bottom:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width:38vw;
+        height:auto;
+        &:hover{
+            cursor: pointer;
+            filter:brightness(1.2)
+        }
+    }
+    span{
+        position: absolute;
+        cursor: pointer;
+        font-size:52px;
+    }
+}
