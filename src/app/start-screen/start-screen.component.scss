@@ -6,24 +6,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../../assets/img/wood.jpg'), #564946;
+    background: url('/assets/img/wood.jpg'), #564946;
     background-blend-mode:overlay ;
     img{
         height: 100vh;
+        max-width:100%;
+        object-fit: contain;
         // object-position: 90%;
     }
 }
 
 .start-sign{
     position: absolute;
-    // left:0;
-    // right:0;
     bottom:15px;
     display: flex;
     justify-content: center;
     align-items: center;
     img{
         width:38vw;
+        min-width:330px;
         height:auto;
         &:hover{
             cursor: pointer;
