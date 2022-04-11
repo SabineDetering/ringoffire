@@ -1,9 +1,18 @@
+<app-player style="top:130px" class="player-position"></app-player>
 <div class="table">
-<div class="card-circle">
-    <img  *ngFor="let c of [0,1,2,3];let i = index;" [ngStyle]="{'right.px':i*5}" src="/assets/img/cards/card_cover.png" alt="">
-    <img (click)="takeCard()" class="top-card" style="right:20px" src="/assets/img/cards/card_cover.png" alt="">
-    <img *ngIf="takeCardAnimation" class="take-card" style="right:20px"
-        src="/assets/img/cards/clubs_1.png" alt="">
-</div>
-</div>
+    <div class="card-circle">
+        <img *ngFor="let c of [0,1,2,3];let i = index;" [ngStyle]="{'right.px':i*5}"
+            src="/assets/img/cards/card_cover.png" alt="">
 
+        <!-- <img *ngFor="let c of setOfCards;let i = index;" [ngStyle]="{'left.px':i*0,'top.px':i*0,'transform':'rotate('+i*6.9+'deg)' }"
+            src="/assets/img/cards/card_cover.png" alt=""> -->
+
+        <!-- card stack -->
+        <img (click)="takeCard()" class="top-card" style="right:20px" src="/assets/img/cards/card_cover.png" alt="">
+        <!-- played cards -->
+        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card}}.png" alt="">
+        <!-- card animation -->
+        <img *ngIf="takeCardAnimation" class="take-card" style="right:20px"
+            src="/assets/img/cards/{{ currentCard }}.png" alt="">
+    </div>
+</div>
