@@ -2,6 +2,8 @@ export class Game {
     public players: string[] = ['Petra','Susanne','Michaela'];
     public stack: string[] = [];
     public playedCards: string[] = [];
+    public playedIndices: number[] = [];
+    public allIndices: number[] = [];
     public currentPlayer: number = 0;
 
     constructor() {
@@ -10,12 +12,14 @@ export class Game {
             this.stack.push('clubs_' + i);
             this.stack.push('diamonds_' + i);
             this.stack.push('hearts_' + i);
-            this.stack.push('clubs_' + i);
         }
         shuffle(this.stack);
+
+        for (let i = 0; i < 52; i++){
+            this.allIndices.push(i);
+        }
     }
-
-
+    
 }
 
 /**

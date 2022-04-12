@@ -23,10 +23,13 @@ export class GameComponent implements OnInit {
     this.game = new Game();
     console.log(this.game);
   }
-  takeCard() {
+
+
+  takeCard(index:number) {
     if (!this.takeCardAnimation) {
       //take the last card of the stack
       this.currentCard = this.game.stack.pop();
+      this.game.playedIndices.push(index);
       console.log(this.game);
       this.takeCardAnimation = true;
 

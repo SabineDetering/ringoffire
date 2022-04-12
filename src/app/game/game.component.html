@@ -1,27 +1,35 @@
-<app-player *ngFor="let player of game.players;let i=index" [ngStyle]="{'top.px':100 + (110 * i)}" [name]="player"
-    class="player-position">
-</app-player>
+<div class="player-position">
+    <app-player *ngFor="let player of game.players;let i=index" [ngStyle]="{'top.px':50 + (90 * i)}" [name]="player">
+    </app-player>
+    <button mat-fab color="primary" (click)="openDialog()" class="btn-add">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
 
 <div class="table">
     <div class="card-circle">
-        <img *ngFor="let c of [0,1,2,3];let i = index;" [ngStyle]="{'right.px':i*5}"
-            src="/assets/img/cards/card_cover.png" alt="">
-
-        <!-- <img *ngFor="let c of setOfCards;let i = index;" [ngStyle]="{'left.px':i*0,'top.px':i*0,'transform':'rotate('+i*6.9+'deg)' }"
+        <!-- card stack -->
+        <!-- <img *ngFor="let c of [0,1,2,3];let i = index;" [ngStyle]="{'right.px':i*5}"
             src="/assets/img/cards/card_cover.png" alt=""> -->
 
-        <!-- card stack -->
-        <img (click)="takeCard()" class="top-card" style="right:20px" src="/assets/img/cards/card_cover.png" alt="">
+        <ng-container *ngFor="let card of game.allIndices;let i = index;">
+            <img *ngIf="!game.playedIndices.includes(i)" class="circle-card"
+                [ngStyle]="{'transform':'rotate('+i*6.75+'deg) translateY(-32.5vh)'}"
+                src="/assets/img/cards/card_cover.png" (click)="takeCard(i)">
+        </ng-container>
+
+        <!-- <img (click)="takeCard()" class="top-card" style="right:20px" src="/assets/img/cards/card_cover.png" alt=""> -->
+
         <!-- played cards -->
-        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card}}.png" alt="">
+        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card}}.png">
+
         <!-- card animation -->
-        <img *ngIf="takeCardAnimation" class="take-card" style="right:20px"
-            src="/assets/img/cards/{{ currentCard }}.png" alt="">
+        <!-- <img *ngIf="takeCardAnimation" class="take-card" style="right:20px"
+            src="/assets/img/cards/{{ currentCard }}.png" alt=""> -->
+        <img *ngIf="takeCardAnimation" class="take-card" 
+            src="/assets/img/cards/{{ currentCard }}.png">
     </div>
 
 
 </div>
-<button mat-fab color="primary" (click)="openDialog()" class="btn-add">
-    <mat-icon>add</mat-icon>
-</button>
 <div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
