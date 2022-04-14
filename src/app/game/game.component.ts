@@ -40,8 +40,6 @@ export class GameComponent implements OnInit {
   isTaken: boolean[] = []
   currentCard: string = '';
   game: Game;
-  degrees: number = 0;
-  counter: number = 0;
 
   constructor(public dialog: MatDialog) {
     for (let i = 0; i < 52; i++) {
@@ -59,36 +57,23 @@ export class GameComponent implements OnInit {
   }
 
 
-  // takeCard(index: number) {
-  //   if (!this.takeCardAnimation) {
-  //     //take the last card of the stack
-  //     this.currentCard = this.game.stack.pop();
-  //     this.game.playedIndices.push(index);
-  //     console.log(this.game);
-  //     this.takeCardAnimation = true;
-
-  //     setTimeout(() => {
-  //       this.takeCardAnimation = false;
-  //       this.game.playedCards.push(this.currentCard);
-  //     }, 1000);
-  //   }
-  // }
-
   takeCard(index: number) {
     this.currentCard = this.game.stack[index];
     this.game.playedIndices.push(index);
     this.isTaken[index] = true;
     console.log('index: ', index, 'card: ', this.currentCard);
-    this.counter++;
-    console.log('counter', this.counter);
+    this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
+    console.log('player', this.game.currentPlayer);
   }
 
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(name => {
+      if (name) {
+        this.game.players.push(name);
+      }
     });
   }
 }

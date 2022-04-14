@@ -4,9 +4,9 @@
     max-width: 100%;
     overflow-y: hidden;
     background-image: url('/assets/img/wood.jpg');
-    // display: flex;
-    // // justify-content: center;
-    // align-items: center;
+    // display:flex;
+    // flex-direction: column;
+    // justify-content: flex-end;
 }
 
 .player-position {
@@ -20,14 +20,13 @@
     // position: absolute;
     // bottom:32px;
     // right: 32px;
-    background-color: rgb(223, 5, 5);
+    background-color:#f98c30;
     ;
 }
 
 .card-circle {
     position: relative;
-    // width: 100vw;
-    // height: 100vh;
+    // justify-self: flex-start;
 }
 
 .card {
@@ -64,61 +63,9 @@
     transform: rotateX(180deg);
 }
 
-// // .top-card {
-// //     cursor: pointer;
-// //     transition: all 125ms ease-in-out;
-
-// //     &:hover {
-// //         transform: scale(1.05) translateY(-10px);
-// //     }
-// // }
-
-// // .take-card {
-// //     animation: take-card-animation 1s ease-in-out;
-// //     transform: scale(1.3) translateX(120px) translateY(-150px) rotate(10deg);
-// // }
-
-
-// // @keyframes take-card-animation {
-// //     0% {
-// //         transform: scale(1)
-// //     }
-
-// //     25% {
-// //         transform: scale(1.5)
-// //     }
-
-// //     50% {
-// //         transform: scale(1.5)
-// //     }
-
-// //     100% {
-// //         transform: scale(1.3) translateX(150px) translateY(-170px) rotate(10deg)
-// //     }
-// // }
-
-// // .played-card {
-// //     right:20px;
-// //     transform: scale(1.3) translateX(150px) translateY(-170px) rotate(10deg);
-// // }
-
-// .take-card {
-//     animation: take-card-animation 1s ease-in-out;
-//     left: 50vh;
-//     top: 37.5vh;
-// }
-
-// @keyframes take-card-animation {
-//     from {
-//         transform: scale(1.5)
-//     }
-
-//     to {
-//         transform: scale(1)
-//     }
-// }
-
-// .played-card {
-//     left: 50vh;
-//     top: 37.5vh;
-// }
+.pin-bottom{
+    position: absolute;
+    bottom:32px;
+    left:100px;
+    right:100px;
+}

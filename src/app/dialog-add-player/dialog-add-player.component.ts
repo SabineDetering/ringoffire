@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dialog-add-player',
@@ -12,7 +12,5 @@ export class DialogAddPlayerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onNoClick(){}
 
 }

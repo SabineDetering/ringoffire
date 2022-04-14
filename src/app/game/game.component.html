@@ -1,5 +1,7 @@
 <div class="player-position">
-    <app-player *ngFor="let player of game.players;let i=index" [ngStyle]="{'top.px':50 + (90 * i)}" [name]="player">
+    <app-player *ngFor="let player of game.players;let i=index" [ngStyle]="{'top.px':50 + (90 * i)}"
+        [playerActive]="i==game.currentPlayer" [name]="player">
+
     </app-player>
     <button mat-fab color="primary" (click)="openDialog()" class="btn-add">
         <mat-icon>add</mat-icon>
@@ -24,5 +26,7 @@
         </div>
     </div>
 
-    
+    <app-action-text [card]="currentCard" class="pin-bottom"> </app-action-text>
     <div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
+
+</div>
