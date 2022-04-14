@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     max-width: 100%;
+    overflow-y: hidden;
     background-image: url('/assets/img/wood.jpg');
     // display: flex;
     // // justify-content: center;
@@ -38,6 +39,7 @@
     cursor: pointer;
     perspective: 1000px;
     transform-style: preserve-3d;
+    transform-origin: 50% 50% ;
 }
 
 .card-back,
@@ -52,26 +54,15 @@
     }
 }
 
-.card-back{
+.card-back {
     &:hover {
         filter: brightness(0.7);
     }
 }
 
 .card-front {
-    transform: rotateY(180deg);
+    transform: rotateX(180deg);
 }
-
-// .circle-card {
-//     left: 50vh;
-//     // transform:translateY(-50%);
-//     top: 37.5vh;
-//     cursor: pointer;
-
-//     &:hover {
-//         filter: brightness(0.7);
-//     }
-// }
 
 // // .top-card {
 // //     cursor: pointer;

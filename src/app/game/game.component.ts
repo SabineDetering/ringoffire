@@ -3,28 +3,35 @@ import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { trigger, state, style, animate, transition, keyframes, query, stagger } from '@angular/animations';
+import { trigger, state, style, animate, transition, keyframes, query, stagger, useAnimation } from '@angular/animations';
+import { takeCardAnimation } from 'src/models/animation';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
   animations: [
-    trigger('takingCardAnimation', [
-
+    trigger('takingCard', [
       state('false', style('*')),
-
       state('true', style({
         zIndex: '{{ level }}',
-        transform: ' translate(6vh) rotateY(180deg) rotate({{ degrees }}deg) '
-      }), { params: {  degrees: 0, level: 0 } }),
+        transform: '  rotateX(-180deg)  translateX({{ XOffset }}vh)  rotate({{ degrees }}deg)'
+      }), {
+        params: {
+          degrees: 0,
+          level: 0,
+          XOffset: 0
+        }
+      }),
       transition('* => true', [
-        animate('1s',
-          // keyframes([
-          //   style({ transform: 'rotate({{ orgDegrees }}deg) translateY(-35vh)' }) 
-          // ])
-        )
-      ]),
+        useAnimation(takeCardAnimation)
+      ], {
+        params: {
+          interDegrees: 0,
+          orgDegrees: 0,
+          XOffset: -6
+        }
+      }),
     ])
   ]
 })
