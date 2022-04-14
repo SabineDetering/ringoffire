@@ -12,24 +12,40 @@
         <!-- <img *ngFor="let c of [0,1,2,3];let i = index;" [ngStyle]="{'right.px':i*5}"
             src="/assets/img/cards/card_cover.png" alt=""> -->
 
-        <ng-container *ngFor="let card of game.allIndices;let i = index;">
+        <!-- <ng-container *ngFor="let card of game.allIndices;let i = index;">
             <img *ngIf="!game.playedIndices.includes(i)" class="circle-card"
                 [ngStyle]="{'transform':'rotate('+i*6.75+'deg) translateY(-32.5vh)'}"
                 src="/assets/img/cards/card_cover.png" (click)="takeCard(i)">
-        </ng-container>
+        </ng-container> -->
+
+
+        <!-- <img class="card" src="/assets/img/cards/ace_1.png" alt=""> -->
 
         <!-- <img (click)="takeCard()" class="top-card" style="right:20px" src="/assets/img/cards/card_cover.png" alt=""> -->
 
         <!-- played cards -->
-        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card}}.png">
+        <!-- <img *ngFor="let card of game.playedCards;let i = index;" class="played-card"
+            src="/assets/img/cards/{{ card}}.png"> -->
+        <!-- [ngStyle]="{'transform':'rotate('+i+'deg) translateY('+i*5+'px)'}" -->
+
 
         <!-- card animation -->
         <!-- <img *ngIf="takeCardAnimation" class="take-card" style="right:20px"
             src="/assets/img/cards/{{ currentCard }}.png" alt=""> -->
-        <img *ngIf="takeCardAnimation" class="take-card" 
-            src="/assets/img/cards/{{ currentCard }}.png">
+        <!-- <img *ngIf="takeCardAnimation" class="take-card" src="/assets/img/cards/{{ currentCard }}.png">
+    </div> -->
+
+
+        <div *ngFor="let card of game.stack;let i = index;" (click)="takeCard(i)" class="card"
+            [ngStyle]="{'transform':'rotate('+i*6.75+'deg) translateY(-32.5vh)'}"
+            [@takingCardAnimation]="{value:isTaken[i],params:{level: game.playedIndices.indexOf(i),degrees: (i%5 -2)*3}} ">
+            <div class="card-back">
+                <img src="/assets/img/cards/card_cover.png">
+            </div>
+            <div class="card-front">
+                <img src="/assets/img/cards/{{ card }}.png">
+            </div>
+        </div>
+
     </div>
-
-
-</div>
-<div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
+    <div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
