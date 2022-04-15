@@ -8,10 +8,15 @@ export class Game {
 
     constructor() {
         for (let i = 1; i < 14; i++) {
-            this.stack.push('ace_' + i);
-            this.stack.push('clubs_' + i);
-            this.stack.push('diamonds_' + i);
-            this.stack.push('hearts_' + i);
+            // this.stack.push('ace_' + i);
+            // this.stack.push('clubs_' + i);
+            // this.stack.push('diamonds_' + i);
+            // this.stack.push('hearts_' + i);
+
+            this.stack.push(i+'_of_clubs');
+            this.stack.push(i+'_of_diamonds');
+            this.stack.push(i+'_of_hearts');
+            this.stack.push(i+'_of_spades');
         }
         shuffle(this.stack);
 

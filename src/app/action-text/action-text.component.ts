@@ -32,7 +32,7 @@ export class ActionTextComponent implements OnInit, OnChanges {
   }
   ngOnChanges(): void {
     if (this.card) {
-      let currentType = +this.card.split('_')[1];
+      let currentType = +this.card.split('_')[0];
       this.title = this.actions[currentType - 1].title;
       this.description = this.actions[currentType - 1].description;
     }

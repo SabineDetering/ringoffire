@@ -6,7 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('/assets/img/wood.jpg'), #564946;
+    background: url('../../assets/img/wood.jpg'),
+    #564946;
     background-blend-mode:overlay ;
     img{
         height: 100vh;
