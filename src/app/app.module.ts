@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { PlayerSectionComponent } from './player-section/player-section.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     GameComponent,
     PlayerComponent,
     DialogAddPlayerComponent,
-    ActionTextComponent
+    ActionTextComponent,
+    PlayerSectionComponent
   ],
   imports: [
     BrowserModule,

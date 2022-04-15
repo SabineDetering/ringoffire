@@ -41,7 +41,7 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   game: Game;
 
-  constructor(public dialog: MatDialog) {
+  constructor() {
     for (let i = 0; i < 52; i++) {
       this.isTaken.push(false);
     }
@@ -64,17 +64,6 @@ export class GameComponent implements OnInit {
     console.log('index: ', index, 'card: ', this.currentCard);
     this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
     console.log('player', this.game.currentPlayer);
-  }
-
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddPlayerComponent);
-
-    dialogRef.afterClosed().subscribe(name => {
-      if (name) {
-        this.game.players.push(name);
-      }
-    });
   }
 }
 

@@ -3,25 +3,19 @@
     height: 100vh;
     max-width: 100%;
     overflow-y: hidden;
-    background-image: url('../../assets/img/wood.jpg');
+    background: url('../../assets/img/wood.jpg'),
+    #564946;
+    background-blend-mode:overlay;
     // display:flex;
     // flex-direction: column;
     // justify-content: flex-end;
 }
 
-.player-position {
+.player-section {
     position: absolute;
     top: 40px;
     right: 0;
     text-align: center;
-}
-
-.btn-add {
-    // position: absolute;
-    // bottom:32px;
-    // right: 32px;
-    background-color:#f98c30;
-    ;
 }
 
 .card-circle {
