@@ -5,6 +5,8 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { trigger, state, style, animate, transition, keyframes, query, stagger, useAnimation } from '@angular/animations';
 import { takeCardAnimation } from 'src/models/animation';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -41,7 +43,7 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   game: Game;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private router: Router, private firestore: AngularFirestore) {
     for (let i = 0; i < 52; i++) {
       this.isTaken.push(false);
     }
@@ -49,11 +51,18 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.newGame();
+    this.route.params.subscribe((params) => {
+      console.log(params);
+    });
+    this.firestore.collection('games').valueChanges().subscribe(game => {
+      console.log('game update', game)
+    });
   }
 
   newGame() {
     this.game = new Game();
     console.log(this.game);
+    this.firestore.collection('games').add(this.game.toJson());
   }
 
 

@@ -1,5 +1,5 @@
 export class Game {
-    public players: string[] = ['Petra','Susanne','Michaela'];
+    public players: string[] = ['Petra', 'Susanne', 'Michaela'];
     public stack: string[] = [];
     public playedCards: string[] = [];
     public playedIndices: number[] = [];
@@ -8,23 +8,30 @@ export class Game {
 
     constructor() {
         for (let i = 1; i < 14; i++) {
-            // this.stack.push('ace_' + i);
-            // this.stack.push('clubs_' + i);
-            // this.stack.push('diamonds_' + i);
-            // this.stack.push('hearts_' + i);
 
-            this.stack.push(i+'_of_clubs');
-            this.stack.push(i+'_of_diamonds');
-            this.stack.push(i+'_of_hearts');
-            this.stack.push(i+'_of_spades');
+            this.stack.push(i + '_of_clubs');
+            this.stack.push(i + '_of_diamonds');
+            this.stack.push(i + '_of_hearts');
+            this.stack.push(i + '_of_spades');
         }
         shuffle(this.stack);
 
-        for (let i = 0; i < 52; i++){
+        for (let i = 0; i < 52; i++) {
             this.allIndices.push(i);
         }
     }
-    
+
+
+    public toJson() {
+        return {
+            players: this.players,
+            stack: this.stack,
+            playedCards: this.playedCards,
+            playedIndices: this.playedIndices,
+            allIndices: this.allIndices,
+            currentPlayer: this.currentPlayer
+        }
+    }
 }
 
 /**
