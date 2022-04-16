@@ -4,14 +4,13 @@
 
 export const environment = {
   production: false, firebase: {
-    databaseURL: 'https://ringoffire-6ea29-default-rtdb.europe-west1.firebasedatabase.app/',
-    measurementId: '<your-measurement-id>',
-    apiKey: "AIzaSyBTfz3SzLRdREk82q9KMrZfRMvui8skrMk",
-    authDomain: "ringoffire-6ea29.firebaseapp.com",
-    projectId: "ringoffire-6ea29",
-    storageBucket: "ringoffire-6ea29.appspot.com",
-    messagingSenderId: "621356159746",
-    appId: "1:621356159746:web:758f31db2b52dc8d03281b"
+    apiKey: "AIzaSyBCsNQ1VzNF23z-EPMkwAIj8k5mWmFL8pI",
+    authDomain: "ringoffire-5119d.firebaseapp.com",
+    databaseURL: "https://ringoffire-5119d-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "ringoffire-5119d",
+    storageBucket: "ringoffire-5119d.appspot.com",
+    messagingSenderId: "39732006030",
+    appId: "1:39732006030:web:6953eb54fbf86b0d560ddf"
   }
 };
 

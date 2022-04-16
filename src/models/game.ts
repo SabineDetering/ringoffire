@@ -1,14 +1,15 @@
 export class Game {
     public players: string[] = ['Petra', 'Susanne', 'Michaela'];
-    public stack: string[] = [];
+    public stack: any[] = [];
     public playedCards: string[] = [];
     public playedIndices: number[] = [];
     public allIndices: number[] = [];
     public currentPlayer: number = 0;
+    public isTaken: boolean[] = [];
+    public currentCard: string = '';
 
     constructor() {
         for (let i = 1; i < 14; i++) {
-
             this.stack.push(i + '_of_clubs');
             this.stack.push(i + '_of_diamonds');
             this.stack.push(i + '_of_hearts');
@@ -18,6 +19,7 @@ export class Game {
 
         for (let i = 0; i < 52; i++) {
             this.allIndices.push(i);
+            this.isTaken.push(false);
         }
     }
 
@@ -29,10 +31,13 @@ export class Game {
             playedCards: this.playedCards,
             playedIndices: this.playedIndices,
             allIndices: this.allIndices,
-            currentPlayer: this.currentPlayer
+            currentPlayer: this.currentPlayer,
+            isTaken: this.isTaken,
+            currentCard: this.currentCard
         }
     }
 }
+
 
 /**
  * Fisher-Yates Shuffle for shuffling the card stack in place

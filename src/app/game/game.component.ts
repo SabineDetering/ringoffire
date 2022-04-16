@@ -34,45 +34,77 @@ import { ActivatedRoute, Router } from '@angular/router';
           XOffset: -6
         }
       }),
-    ])
+      transition('void => true', [
+        useAnimation(takeCardAnimation)
+      ], {
+        params: {
+          interDegrees: 0,
+          orgDegrees: 0,
+          XOffset: -6
+        }
+      }),
+    ]),
+    trigger('distributeCards',[])
   ]
 })
 
 export class GameComponent implements OnInit {
-  isTaken: boolean[] = []
-  currentCard: string = '';
   game: Game;
+  gameId: string;
 
-  constructor(private route: ActivatedRoute, private router: Router, private firestore: AngularFirestore) {
-    for (let i = 0; i < 52; i++) {
-      this.isTaken.push(false);
-    }
-  }
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.newGame();
     this.route.params.subscribe((params) => {
-      console.log(params);
-    });
-    this.firestore.collection('games').valueChanges().subscribe(game => {
-      console.log('game update', game)
+      console.log(params['id']);
+      this.gameId = params['id'];
+
+      this
+        .firestore
+        .collection('games')
+        .doc(this.gameId)
+        .valueChanges()
+        .subscribe((game: any) => {
+          console.log('game update', game);
+          this.game.allIndices = game.allIndices;
+          this.game.currentPlayer = game.currentPlayer;
+          this.game.playedCards = game.playedCards;
+          this.game.playedIndices = game.playedIndices;
+          this.game.players = game.players;
+          this.game.stack = game.stack;
+          this.game.isTaken = game.isTaken;
+          this.game.currentCard = game.currentCard;
+        });
+      console.log(this.game);
     });
   }
+
 
   newGame() {
     this.game = new Game();
     console.log(this.game);
-    this.firestore.collection('games').add(this.game.toJson());
   }
 
 
   takeCard(index: number) {
-    this.currentCard = this.game.stack[index];
+    this.game.currentCard = this.game.stack[index];
     this.game.playedIndices.push(index);
-    this.isTaken[index] = true;
-    console.log('index: ', index, 'card: ', this.currentCard);
+    this.game.isTaken[index] = true;
+    console.log('index: ', index, 'card: ', this.game.currentCard);
     this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
+    this.saveGame();
     console.log('player', this.game.currentPlayer);
   }
+
+  
+saveGame() {
+  this
+    .firestore
+    .collection('games')
+    .doc(this.gameId)
+    .update(this.game.toJson());
 }
+}
+
 
