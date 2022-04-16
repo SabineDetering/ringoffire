@@ -4,22 +4,23 @@
 <div class="table">
     <div class="card-circle" [@distributeCards]>
         <div *ngFor="let card of game.stack;let i = index;" (click)="takeCard(i)" class="card"
-            [ngStyle]="{'transform':'rotate('+i*6.75+'deg) translateY(-32.5vh)'}" [@takingCard]="{value:game.isTaken[i],params:{
+            [ngStyle]="{'transform':'rotate('+card.orgDegrees+'deg) translateY(-32.5vh)'}" [@takingCard]="{value:game.isTaken[i],params:{
                     level: game.playedIndices.indexOf(i),
-                    degrees: i<14|| i>39? (i%5 -2)*3: (i%5 -2)*3-180,
-                    interDegrees: i<14|| i>39? -i*6.75: 0,
-                    orgDegrees:i*6.75, 
-                    XOffset:i<14|| i>39?-6:6}} ">
+                    degrees: card.degrees,
+                    interDegrees: card.interDegrees,
+                    orgDegrees:card.orgDegrees, 
+                    XOffset:card.XOffset, 
+                    YOffset:card.YOffset}} ">
             <div class="card-back">
                 <img src="assets/img/cards/card_cover_red.png">
             </div>
             <div class="card-front">
-                <img src="assets/img/cards/{{ card }}.png">
+                <img src="assets/img/cards/{{ card.face }}.png">
             </div>
         </div>
     </div>
 
-    <app-action-text [card]="game.currentCard" class="pin-bottom"> </app-action-text>
+    <app-action-text [card]="game.currentFace" class="pin-bottom"> </app-action-text>
     <div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
 
     <a href="https://www.freevector.com/playing-cards-vector">FreeVector.com</a>

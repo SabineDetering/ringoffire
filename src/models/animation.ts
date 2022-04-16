@@ -18,7 +18,7 @@ export const takeCardAnimation = animation([
             }),
             style({
                 zIndex: '{{ level }}',
-                transform: ' rotateX(-180deg)   translateX({{ XOffset }}vh) rotate({{ degrees }}deg) ', offset: 1
+                transform: ' rotateX(-180deg)   translateX({{ XOffset }}vh) translateY({{ YOffset }}px) rotate({{ degrees }}deg) ', offset: 1
             })
         ])
     )

@@ -17,34 +17,37 @@ import { ActivatedRoute, Router } from '@angular/router';
       state('false', style('*')),
       state('true', style({
         zIndex: '{{ level }}',
-        transform: '  rotateX(-180deg)  translateX({{ XOffset }}vh)  rotate({{ degrees }}deg)'
+        transform: '  rotateX(-180deg)  translateX({{ XOffset }}vh) translateY({{ YOffset }}px) rotate({{ degrees }}deg)'
       }), {
         params: {
           degrees: 0,
           level: 0,
-          XOffset: 0
+          XOffset: 0,
+          YOffset: 0
         }
       }),
-      transition('* => true', [
+      transition('false => true', [
         useAnimation(takeCardAnimation)
       ], {
         params: {
           interDegrees: 0,
           orgDegrees: 0,
-          XOffset: -6
+          XOffset: -6,
+          YOffset: 0
         }
       }),
-      transition('void => true', [
-        useAnimation(takeCardAnimation)
-      ], {
-        params: {
-          interDegrees: 0,
-          orgDegrees: 0,
-          XOffset: -6
-        }
-      }),
+      // transition('void => true', [
+      //   useAnimation(takeCardAnimation)
+      // ], {
+      //   params: {
+      //     interDegrees: 0,
+      //     orgDegrees: 0,
+      //     XOffset: -6,
+      // YOffset: 0
+      //   }
+      // }),
     ]),
-    trigger('distributeCards',[])
+    trigger('distributeCards', [])
   ]
 })
 
@@ -74,7 +77,7 @@ export class GameComponent implements OnInit {
           this.game.players = game.players;
           this.game.stack = game.stack;
           this.game.isTaken = game.isTaken;
-          this.game.currentCard = game.currentCard;
+          this.game.currentFace = game.currentFace;
         });
       console.log(this.game);
     });
@@ -88,23 +91,23 @@ export class GameComponent implements OnInit {
 
 
   takeCard(index: number) {
-    this.game.currentCard = this.game.stack[index];
+    this.game.currentFace = this.game.stack[index].face;
     this.game.playedIndices.push(index);
     this.game.isTaken[index] = true;
-    console.log('index: ', index, 'card: ', this.game.currentCard);
+    console.log('index: ', index, 'card: ', this.game.currentFace);
     this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
     this.saveGame();
     console.log('player', this.game.currentPlayer);
   }
 
-  
-saveGame() {
-  this
-    .firestore
-    .collection('games')
-    .doc(this.gameId)
-    .update(this.game.toJson());
-}
+
+  saveGame() {
+    this
+      .firestore
+      .collection('games')
+      .doc(this.gameId)
+      .update(this.game.toJson());
+  }
 }
 
 
