@@ -4,8 +4,8 @@
     max-width: 100%;
     overflow-y: hidden;
     background: url('../../assets/img/wood.jpg'),
-    #564946;
-    background-blend-mode:overlay;
+        #564946;
+    background-blend-mode: overlay;
     // display:flex;
     // flex-direction: column;
     // justify-content: flex-end;
@@ -28,23 +28,27 @@
     left: 50vh;
     top: 37.5vh;
     height: 20vh;
-    width: auto;
+    width: calc(20vh / 726 * 500);
+    transform: rotate(var(--orgDegrees)) translateY(-32.5vh);
     cursor: pointer;
     perspective: 1000px;
     transform-style: preserve-3d;
-    transform-origin: 50% 50% ;
+    transform-origin: 50% 50%;
 }
 
 .card-back,
 .card-front {
     position: absolute;
     backface-visibility: hidden;
-    height: 100%;border-radius: 15px;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
     box-shadow: 0px 0px 2px 5px rgba(0, 0, 0, 0.15);
 
     img {
         height: 100%;
-        object-fit: contain;
+        width: 100%;
+        object-fit: scale-down;
     }
 }
 
@@ -58,9 +62,79 @@
     transform: rotateX(180deg);
 }
 
-.pin-bottom{
+.distribute-card {
+    opacity: 0;
+    animation-name: distributeCards;
+    animation-timing-function: linear;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-delay: var(--animation-delay);
+}
+
+
+@keyframes distributeCards {
+    from {
+        opacity: 1;
+        left: 50vh;
+        top: 37.5vh;
+        transform: none;
+    }
+
+    to {
+        opacity: 1;
+        left: 50vh;
+        top: 37.5vh;
+        transform: rotate(var(--orgDegrees)) translateY(-32.5vh);
+    }
+}
+
+.taking-card {
+    animation-name: takeCardAnimation;
+    animation-duration: 1000ms;
+    animation-timing-function: cubic-bezier(0.48, 0.05, 0.35, 0.93);
+    animation-fill-mode: forwards;
+}
+
+@keyframes takeCardAnimation {
+    0% {
+        transform: rotate(var(--orgDegrees)) translateY(-32.5vh);
+    }
+
+    20% {
+        transform: rotate(var(--orgDegrees)) translateY(-45vh);
+    }
+
+    40% {
+        z-index: 100;
+        transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-35vh) rotateX(-120deg);
+    }
+
+    50% {
+        z-index: 100;
+        transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-30vh) rotateX(-180deg);
+    }
+
+    // 80% {
+    //     z-index: 100;
+    //     transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-12vh) rotate(var(--interDegrees)) rotateX(-180deg);
+    // }
+
+    100% {
+        z-index: var(--level);
+        transform: scale(1.0) rotate(var(--degrees)) translateX(var(--XOffset)) translateY(var(--YOffset))  rotateX(-180deg);
+    }
+}
+
+.card-taken {
+    z-index: var(--level);
+    transform: rotate(var(--degrees)) translateX(var(--XOffset)) translateY(var(--YOffset))   rotateX(-180deg);
+}
+
+
+
+.pin-bottom {
     position: absolute;
-    bottom:32px;
-    left:100px;
-    right:100px;
+    bottom: 32px;
+    left: 100px;
+    right: 100px;
 }

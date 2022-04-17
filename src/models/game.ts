@@ -1,5 +1,5 @@
 export class Game {
-    public players: string[] = ['Petra', 'Susanne', 'Michaela'];
+    public players: string[] = [];
     public stack: any[] = [];
     public playedCards: string[] = [];
     public playedIndices: number[] = [];
@@ -25,8 +25,8 @@ export class Game {
             card.interDegrees = i < 14 || i > 39 ? -i * 6.75 : 0;
             //parameters for position when card is taken
             card.degrees = this.setAngle(i);
-            card.XOffset = this.setOffsetX(i);
-            card.YOffset = this.setOffsetY();
+            card.XOffset = this.setOffset();
+            card.YOffset = this.setOffset();
         }
 
         for (let i = 0; i < 52; i++) {
@@ -35,27 +35,20 @@ export class Game {
         }
     }
 
-    setAngle(index:number) {
-        let randomTwist = (Math.random() - 0.5) * 80;
-        if (index < 14 || index > 39) {
+    setAngle(index: number) {
+        let randomTwist = (Math.random() - 0.5) * 70;
+        if (index < 14) {
             return randomTwist;
+        } else if (index > 39) {
+            return randomTwist + 360;
         } else {
-            return randomTwist - 180;
-        }
-    }
-
-    setOffsetX(index: number) {
-        let randomOffset = (Math.random() - 0.5)*2;
-        if (index < 14 || index > 39) {
-            return -6 + randomOffset;
-        } else {
-            return 6 + randomOffset;
+            return randomTwist + 180;
         }
     }
 
 
-    setOffsetY() {
-        return  (Math.random() - 0.5) * 30;
+    setOffset() {
+        return (Math.random() - 0.5) * 30;
     }
 
 
