@@ -2,9 +2,10 @@
 <app-player-section class="player-section" [game]="game"></app-player-section>
 
 <div class="table">
-    <div class="card-circle" [@distributeCards]>
+    <div class="card-circle">
         <div *ngFor="let card of game.stack;let i = index;" (click)="takeCard(i)" class="card"
-            [ngStyle]="{'transform':'rotate('+card.orgDegrees+'deg) translateY(-32.5vh)'}" [@takingCard]="{value:game.isTaken[i],params:{
+            [ngStyle]="{'transform':'rotate('+card.orgDegrees+'deg) translateY(-32.5vh)'}" 
+            [@takingCard]="{value:game.playedIndices[game.playedIndices.length-1]==i,params:{
                     level: game.playedIndices.indexOf(i),
                     degrees: card.degrees,
                     interDegrees: card.interDegrees,

@@ -26,7 +26,7 @@ import { ActivatedRoute, Router } from '@angular/router';
           YOffset: 0
         }
       }),
-      transition('false => true', [
+      transition('* => true', [
         useAnimation(takeCardAnimation)
       ], {
         params: {
@@ -45,9 +45,8 @@ import { ActivatedRoute, Router } from '@angular/router';
       //     XOffset: -6,
       // YOffset: 0
       //   }
-      // }),
-    ]),
-    trigger('distributeCards', [])
+      // })
+    ])
   ]
 })
 

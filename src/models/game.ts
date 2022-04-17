@@ -23,6 +23,7 @@ export class Game {
             card.orgDegrees = i * 6.75;
             //angle needed for intermediate step of transition
             card.interDegrees = i < 14 || i > 39 ? -i * 6.75 : 0;
+            //parameters for position when card is taken
             card.degrees = this.setAngle(i);
             card.XOffset = this.setOffsetX(i);
             card.YOffset = this.setOffsetY();
