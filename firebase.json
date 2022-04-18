@@ -22,9 +22,5 @@
   },
   "storage": {
     "rules": "storage.rules"
-  },
-  "remoteconfig": {},
-  "functions": {
-    "source": "functions"
   }
 }

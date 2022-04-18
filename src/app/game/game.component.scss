@@ -104,30 +104,39 @@
         transform: rotate(var(--orgDegrees)) translateY(-45vh);
     }
 
-    40% {
+    25% {
         z-index: 100;
-        transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-35vh) rotateX(-120deg);
+        transform: rotate(var(--orgDegrees)) translateY(-45vh) rotateX(-120deg) scale(1.2);
     }
 
-    50% {
+    30% {
         z-index: 100;
-        transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-30vh) rotateX(-180deg);
+        transform: rotate(var(--orgDegrees)) translateY(-45vh) rotateX(-180deg) scale(1.2);
     }
+
+    // 40% {
+    //     z-index: 100;
+    //     transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-35vh) rotateX(-120deg);
+    // }
+    // 50% {
+    //     z-index: 100;
+    //     transform:rotate(var(--orgDegrees)) translateY(-30vh) rotateX(-180deg) scale(1.2);
+    // }
 
     // 80% {
     //     z-index: 100;
-    //     transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-12vh) rotate(var(--interDegrees)) rotateX(-180deg);
+    //     transform:  rotate(var(--orgDegrees)) translateY(-12vh) rotate(var(--interDegrees)) rotateX(-180deg) scale(1.2);
     // }
 
     100% {
         z-index: var(--level);
-        transform: scale(1.0) rotate(var(--degrees)) translateX(var(--XOffset)) translateY(var(--YOffset))  rotateX(-180deg);
+        transform: rotate(var(--degrees)) translateX(var(--XOffset)) translateY(var(--YOffset)) rotateX(-180deg) scale(1.0);
     }
 }
 
 .card-taken {
     z-index: var(--level);
-    transform: rotate(var(--degrees)) translateX(var(--XOffset)) translateY(var(--YOffset))   rotateX(-180deg);
+    transform: rotate(var(--degrees)) translateX(var(--XOffset)) translateY(var(--YOffset)) rotateX(-180deg);
 }
 
 
@@ -139,5 +148,5 @@
     right: 80px;
     display: flex;
     align-items: center;
-    gap:16px;
+    gap: 16px;
 }

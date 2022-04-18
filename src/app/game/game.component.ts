@@ -7,6 +7,8 @@ import { trigger, state, style, animate, transition, keyframes, query, stagger, 
 import { takeCardAnimation } from 'src/models/animation';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { interval } from 'rxjs';
+import { throttle } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game',
@@ -71,6 +73,7 @@ export class GameComponent implements OnInit {
         .collection('games')
         .doc(this.gameId)
         .valueChanges()
+        .pipe(throttle(val=>interval(1000)))
         .subscribe((game: any) => {
           console.log('game update from firestore', game);
           this.game.allIndices = game.allIndices;
