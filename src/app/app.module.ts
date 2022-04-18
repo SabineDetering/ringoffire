@@ -41,7 +41,7 @@ import { environment } from 'src/environments/environment';
     MatDialogModule,
     MatInputModule,
     MatCardModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]

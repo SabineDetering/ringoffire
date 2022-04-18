@@ -135,6 +135,9 @@
 .pin-bottom {
     position: absolute;
     bottom: 32px;
-    left: 100px;
-    right: 100px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    gap:16px;
 }

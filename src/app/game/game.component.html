@@ -17,7 +17,16 @@
         </div>
     </div>
 
-    <app-action-text [card]="game.currentFace" [players]="game.players" class="pin-bottom"> </app-action-text>
+    <div class="pin-bottom">
+        <button mat-fab color="basic" (click)="reset()" class="btn-add" title="start a new game">
+            <mat-icon>refresh</mat-icon>
+        </button>
+        <app-action-text [card]="game.currentFace" [players]="game.players"> </app-action-text>
+        <button mat-fab color="basic" (click)="openDialog()" class="btn-add">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
     <div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
 
     <a href="https://www.freevector.com/playing-cards-vector">FreeVector.com</a>

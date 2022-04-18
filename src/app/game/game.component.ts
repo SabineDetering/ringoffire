@@ -54,9 +54,9 @@ export class GameComponent implements OnInit {
   game: Game;
   gameId: string;
   // startFirstGame = false;
-  distribute= true;
+  distribute = true;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore) { }
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     console.log('page loaded');
@@ -82,16 +82,20 @@ export class GameComponent implements OnInit {
           this.game.isTaken = game.isTaken;
           this.game.currentFace = game.currentFace;
         });
-      console.log('game in component after subscription',this.game);
+      console.log('game in component after subscription', this.game);
     });
-   
-    setTimeout(() => { this.distribute = false },4000);
+
+    setTimeout(() => { this.distribute = false }, 4000);
   }
 
 
   newGame() {
     this.game = new Game();
     // console.log(this.game);
+  }
+  reset() {
+    this.game = new Game();
+    this.saveGame();
   }
 
 
@@ -115,6 +119,17 @@ export class GameComponent implements OnInit {
       .doc(this.gameId)
       .update(this.game.toJson());
   }
+
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent);
+
+    dialogRef.afterClosed().subscribe(name => {
+      if (name) {
+        this.game.players.push(name);
+        this.saveGame();
+      }
+    });
+  }
 }
-
-

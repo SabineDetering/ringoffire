@@ -13,20 +13,9 @@ export class PlayerSectionComponent implements OnInit {
 
   @Input() game: Game;
 
-  constructor(private comp:GameComponent,public dialog: MatDialog) { }
+  constructor(private comp:GameComponent) { }
 
   ngOnInit(): void {
   }
 
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddPlayerComponent);
-
-    dialogRef.afterClosed().subscribe(name => {
-      if (name) {
-        this.game.players.push(name);
-        this.comp.saveGame();
-      }
-    });
-  }
 }

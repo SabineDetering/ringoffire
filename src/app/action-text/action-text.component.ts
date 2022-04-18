@@ -32,20 +32,19 @@ export class ActionTextComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
   ngOnChanges(): void {
-    if (this.players.length == 0) {
+    if (this.card) {
+      let currentType = +this.card.split('_')[0];
+      this.title = this.actions[currentType - 1].title;
+      this.description = this.actions[currentType - 1].description;
+    } else if (this.players.length == 0) {
       this.title = 'Add a player';
       this.description = 'Please add a player by clicking on the + button.';
     } else if (this.players.length == 1) {
       this.title = "Drinking alone isn't really fun";
       this.description = 'Add more players! You can play with friends all over the world by sharing the URL of the game. ';
-    }else if (!this.card) {
+    } else {
       this.title = 'Select a card';
       this.description = 'Please click on a card of your choice.';
-    }else{
-      let currentType = +this.card.split('_')[0];
-      this.title = this.actions[currentType - 1].title;
-      this.description = this.actions[currentType - 1].description;
     }
   }
-
 }
