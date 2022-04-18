@@ -18,11 +18,11 @@
     </div>
 
     <div class="pin-bottom">
-        <button mat-fab color="basic" (click)="reset()" class="btn-add" title="start a new game">
+        <button mat-fab color="basic" (click)="reset()" matTooltip="start a new game">
             <mat-icon>refresh</mat-icon>
         </button>
         <app-action-text [card]="game.currentFace" [players]="game.players"> </app-action-text>
-        <button mat-fab color="basic" (click)="openDialog()" class="btn-add">
+        <button mat-fab color="basic" (click)="openDialog()" matTooltip="add a player">
             <mat-icon>add</mat-icon>
         </button>
     </div>
