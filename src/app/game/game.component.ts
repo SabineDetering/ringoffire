@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { trigger, state, style, animate, transition, keyframes, query, stagger, useAnimation } from '@angular/animations';
@@ -9,6 +10,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { throttle } from 'rxjs/operators';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-game',
@@ -128,9 +130,9 @@ export class GameComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe(name => {
+    dialogRef.afterClosed().subscribe((name) => {
       if (name) {
-        this.game.players.push(name);
+        this.game.players.push({ 'name': name, 'avatar': 'selectedAvatar'});
         this.saveGame();
       }
     });

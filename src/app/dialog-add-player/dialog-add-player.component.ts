@@ -7,6 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DialogAddPlayerComponent implements OnInit {
   name: string = '';
+  selectedAvatar: string;
+  avatars: string[] = [
+    'assets/img/profile-pics/boy-orange.png',
+    'assets/img/profile-pics/girl-long-hair.png',
+    'assets/img/profile-pics/girl-orange.png',
+    'assets/img/profile-pics/girl.png',
+    'assets/img/profile-pics/man-beard.png',
+    'assets/img/profile-pics/man-bold.png'    
+  ]
 
   constructor() { }
 

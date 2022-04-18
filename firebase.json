@@ -22,5 +22,6 @@
   },
   "storage": {
     "rules": "storage.rules"
-  }
+  },
+  "remoteconfig": {}
 }

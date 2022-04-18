@@ -18,13 +18,20 @@
     </div>
 
     <div class="pin-bottom">
-        <button mat-fab color="basic" (click)="reset()" matTooltip="start a new game">
-            <mat-icon>refresh</mat-icon>
-        </button>
+
         <app-action-text [card]="game.currentFace" [players]="game.players"> </app-action-text>
-        <button mat-fab color="basic" (click)="openDialog()" matTooltip="add a player">
-            <mat-icon>add</mat-icon>
-        </button>
+
+        <div class="btn-group">
+            <button mat-fab color="basic" (click)="openDialog()" matTooltip="add a player" >
+                <mat-icon>person_add</mat-icon>
+            </button>
+            <button mat-fab color="basic" (click)="openDialog()" matTooltip="share game">
+                <mat-icon>share-variant</mat-icon>
+            </button>
+            <button mat-fab color="basic" (click)="reset()" matTooltip="start new game">
+                <mat-icon>refresh</mat-icon>
+            </button>
+        </div>
     </div>
 
     <div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
