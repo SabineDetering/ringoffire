@@ -1,24 +1,33 @@
 
-<h1 mat-dialog-title>Add new player</h1>
+    <h1 mat-dialog-title>Add new player</h1>
 
-<div mat-dialog-content>
-    <p>Please enter the name of a player</p>
-    <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput  [(ngModel)]="name">
-    </mat-form-field>
-    
-    <p>Please choose an avatar</p>
-    <mat-form-field appearance="fill">
-        <!-- <mat-label>Favorite food</mat-label> -->
-        <mat-select [(ngModel)]="selectedAvatar" >
+    <mat-dialog-content  [formGroup]="form" >
+        <p>Please enter the name of a player</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="playerName" required="">
+        </mat-form-field>
+
+        <p>Please choose an avatar</p>
+        <!-- <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="selectedAvatar">
             <mat-option *ngFor="let avatar of avatars" [value]="avatar">
-               <img src="{{ avatar }}"> 
+                <img src="assets/img/profile-pics/{{ avatar }}">
             </mat-option>
         </mat-select>
-    </mat-form-field>
-</div>
-<div mat-dialog-actions>
-    <button mat-button mat-dialog-close>No Thanks</button>
-    <button mat-button [disabled]="name.trim().length==0"  [mat-dialog-close]="name" >Ok</button>
-</div>
+    </mat-form-field> -->
+
+        <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar">
+
+            <mat-button-toggle class="avatar-btn" *ngFor="let avatar of avatars" value="{{ avatar }}">
+                <img src="assets/img/profile-pics/{{ avatar }}">
+            </mat-button-toggle>
+
+        </mat-button-toggle-group>
+
+    </mat-dialog-content>
+
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>No Thanks</button>
+        <button mat-button [disabled]="form.value.playerName.length==0||form.value.selectedAvatar==''" [mat-dialog-close]="form.value">Ok</button>
+    </div>

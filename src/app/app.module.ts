@@ -20,10 +20,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerSectionComponent } from './player-section/player-section.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { EditPlayerComponent } from './edit-player/edit-player.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { environment } from 'src/environments/environment';
     PlayerComponent,
     DialogAddPlayerComponent,
     ActionTextComponent,
-    PlayerSectionComponent
+    PlayerSectionComponent,
+    EditPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
@@ -48,6 +52,7 @@ import { environment } from 'src/environments/environment';
     MatCardModule,
     MatSelectModule,
     MatTooltipModule,
+    MatButtonToggleModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],

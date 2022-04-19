@@ -128,11 +128,13 @@ export class GameComponent implements OnInit {
 
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddPlayerComponent);
+    const addPlayerDialogRef = this.dialog.open(DialogAddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe((name) => {
-      if (name) {
-        this.game.players.push({ 'name': name, 'avatar': 'selectedAvatar'});
+    addPlayerDialogRef.afterClosed().subscribe((data) => {
+      console.log(data);
+      if (data.playerName) {
+        this.game.players.push({ 'playerName': data.playerName, 'avatar': data.selectedAvatar
+});
         this.saveGame();
       }
     });

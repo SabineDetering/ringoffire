@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-dialog-add-player',
@@ -6,20 +9,29 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./dialog-add-player.component.scss']
 })
 export class DialogAddPlayerComponent implements OnInit {
-  name: string = '';
-  selectedAvatar: string;
+
+  form: FormGroup;
+  
   avatars: string[] = [
-    'assets/img/profile-pics/boy-orange.png',
-    'assets/img/profile-pics/girl-long-hair.png',
-    'assets/img/profile-pics/girl-orange.png',
-    'assets/img/profile-pics/girl.png',
-    'assets/img/profile-pics/man-beard.png',
-    'assets/img/profile-pics/man-bold.png'    
+    'girl-long-hair.png',
+    'boy-orange.png',
+    'girl-orange.png',
+    'girl.png',
+    'man-beard.png',
+    'man-bold.png'
   ]
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private addPlayerDialogRef: MatDialogRef<DialogAddPlayerComponent>) {
+    this.form = this.formBuilder.group({ playerName: '', selectedAvatar: '' })
+  }
 
   ngOnInit(): void {
+  }
+
+  submit(form) {
+    this.addPlayerDialogRef.close(`${form.value}`);
+    console.log('submit ', form.value);
+
   }
 
 }
