@@ -22,10 +22,10 @@
         <app-action-text [card]="game.currentFace" [players]="game.players"> </app-action-text>
 
         <div class="btn-group">
-            <button mat-fab color="basic" (click)="openDialog()" matTooltip="add a player" >
+            <button mat-fab color="basic" (click)="addDialog()" matTooltip="add a player" >
                 <mat-icon>person_add</mat-icon>
             </button>
-            <button mat-fab color="basic" (click)="openDialog()" matTooltip="share game">
+            <button mat-fab color="basic" (click)="editDialog()" matTooltip="share game">
                 <mat-icon>share</mat-icon>
             </button>
             <button mat-fab color="basic" (click)="reset()" matTooltip="start new game">

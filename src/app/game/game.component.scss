@@ -15,7 +15,14 @@
     position: absolute;
     top: 40px;
     right: 0;
-    text-align: center;
+    width:270px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-height:540px;
+    overflow:scroll;
+    overflow-x:hidden;
+    overflow-y: overlay;
 }
 
 .card-circle {

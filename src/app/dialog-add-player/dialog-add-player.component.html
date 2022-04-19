@@ -5,19 +5,12 @@
         <p>Please enter the name of a player</p>
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput formControlName="playerName" required="">
+            <input matInput formControlName="playerName">
         </mat-form-field>
 
         <p>Please choose an avatar</p>
-        <!-- <mat-form-field appearance="fill">
-        <mat-select [(ngModel)]="selectedAvatar">
-            <mat-option *ngFor="let avatar of avatars" [value]="avatar">
-                <img src="assets/img/profile-pics/{{ avatar }}">
-            </mat-option>
-        </mat-select>
-    </mat-form-field> -->
 
-        <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar">
+        <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar" >
 
             <mat-button-toggle class="avatar-btn" *ngFor="let avatar of avatars" value="{{ avatar }}">
                 <img src="assets/img/profile-pics/{{ avatar }}">

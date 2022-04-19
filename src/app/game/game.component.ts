@@ -110,7 +110,8 @@ export class GameComponent implements OnInit {
       this.game.playedIndices.push(index);
       this.game.isTaken[index] = true;
       console.log('index: ', index, 'card: ', this.game.currentFace);
-      this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
+      //shifts the list of players to position current player on top
+      this.game.players.push( this.game.players.shift());
       this.saveGame();
       console.log('player', this.game.currentPlayer);
     }
@@ -127,7 +128,7 @@ export class GameComponent implements OnInit {
 
 
 
-  openDialog(): void {
+  addDialog(): void {
     const addPlayerDialogRef = this.dialog.open(DialogAddPlayerComponent);
 
     addPlayerDialogRef.afterClosed().subscribe((data) => {
@@ -139,4 +140,7 @@ export class GameComponent implements OnInit {
       }
     });
   }
+
+
+  editDialog(): void { }
 }
