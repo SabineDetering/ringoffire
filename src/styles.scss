@@ -1,12 +1,16 @@
+
+*{
+    margin: 0;
+}
+
 html,
 body {
     height: 100%;
+    overflow-x: hidden;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    overflow: hidden;
+       font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -30,4 +34,27 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.background {
+    background-image: url('assets/img/wood.jpg');
+    background-color: #564946;
+    background-blend-mode: overlay;
+    background-repeat: repeat;
+
+    width: 100vw;
+    max-width: 100%;
+    min-height:100%;
+    border:1px transparent solid;
+}
+
+.content {
+    margin: 64px 32px;
+    padding: 16px;
+    background-color: #564946be;
+    color: white;
+
+    a {
+        color: #bababa;
+    }
 }

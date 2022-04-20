@@ -1,11 +1,11 @@
 .table {
-    width: 100vw;
-    height: 100vh;
-    max-width: 100%;
+    // width: 100vw;
+    // height: 100vh;
+    // max-width: 100%;
     overflow-y: hidden;
-    background: url('../../assets/img/wood.jpg'),
-        #564946;
-    background-blend-mode: overlay;
+    // background: url('../../assets/img/wood.jpg'),
+    //     #564946;
+    // background-blend-mode: overlay;
     // display:flex;
     // flex-direction: column;
     // justify-content: flex-end;
@@ -120,20 +120,6 @@
         z-index: 100;
         transform: rotate(var(--orgDegrees)) translateY(-45vh) rotateX(-180deg) scale(1.2);
     }
-
-    // 40% {
-    //     z-index: 100;
-    //     transform: scale(1.2) rotate(var(--orgDegrees)) translateY(-35vh) rotateX(-120deg);
-    // }
-    // 50% {
-    //     z-index: 100;
-    //     transform:rotate(var(--orgDegrees)) translateY(-30vh) rotateX(-180deg) scale(1.2);
-    // }
-
-    // 80% {
-    //     z-index: 100;
-    //     transform:  rotate(var(--orgDegrees)) translateY(-12vh) rotate(var(--interDegrees)) rotateX(-180deg) scale(1.2);
-    // }
 
     100% {
         z-index: var(--level);

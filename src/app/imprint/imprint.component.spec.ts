@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditPlayerComponent } from './edit-player.component';
+import { ImprintComponent } from './imprint.component';
 
-describe('EditPlayerComponent', () => {
-  let component: EditPlayerComponent;
-  let fixture: ComponentFixture<EditPlayerComponent>;
+describe('ImprintComponent', () => {
+  let component: ImprintComponent;
+  let fixture: ComponentFixture<ImprintComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditPlayerComponent ]
+      declarations: [ ImprintComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditPlayerComponent);
+    fixture = TestBed.createComponent(ImprintComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

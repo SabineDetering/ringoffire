@@ -21,11 +21,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerSectionComponent } from './player-section/player-section.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
-import { EditPlayerComponent } from './edit-player/edit-player.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { EditPlayerComponent } from './edit-player/edit-player.component';
     DialogAddPlayerComponent,
     ActionTextComponent,
     PlayerSectionComponent,
-    EditPlayerComponent
+    ImprintComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { EditPlayerComponent } from './edit-player/edit-player.component';
     MatSelectModule,
     MatTooltipModule,
     MatButtonToggleModule,
+    MatMenuModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],

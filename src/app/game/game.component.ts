@@ -3,6 +3,7 @@ import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { MatMenuModule } from '@angular/material/menu';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { trigger, state, style, animate, transition, keyframes, query, stagger, useAnimation } from '@angular/animations';
 import { takeCardAnimation } from 'src/models/animation';
@@ -16,56 +17,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  animations: [
-    trigger('takingCard', [
-      state('false', style('*')),
-      state('true', style({
-        zIndex: '{{ level }}',
-        transform: '  rotateX(-180deg)  translateX({{ XOffset }}vh) translateY({{ YOffset }}px) rotate({{ degrees }}deg)'
-      }), {
-        params: {
-          degrees: 0,
-          level: 0,
-          XOffset: 0,
-          YOffset: 0
-        }
-      }),
-      transition('* => true', [
-        useAnimation(takeCardAnimation)
-      ], {
-        params: {
-          interDegrees: 0,
-          orgDegrees: 0,
-          XOffset: -6,
-          YOffset: 0
-        }
-      }),
-      // transition('void => true', [
-      //   useAnimation(takeCardAnimation)
-      // ], {
-      //   params: {
-      //     interDegrees: 0,
-      //     orgDegrees: 0,
-      //     XOffset: -6,
-      // YOffset: 0
-      //   }
-      // })
-    ])
-  ]
-})
+  })
 
 export class GameComponent implements OnInit {
   game: Game;
   gameId: string;
-  // startFirstGame = false;
-  distribute = true;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     console.log('page loaded');
-    this.newGame();
-    // console.log('game directly after loading ',this.game);
+    this.game = new Game();
     this.route.params.subscribe((params) => {
       console.log('game id ', params['id']);
       this.gameId = params['id'];
@@ -75,9 +37,10 @@ export class GameComponent implements OnInit {
         .collection('games')
         .doc(this.gameId)
         .valueChanges()
-        .pipe(throttle(val=>interval(1000)))
+        .pipe(throttle(() => interval(500)))
         .subscribe((game: any) => {
           console.log('game update from firestore', game);
+          this.game.distribute = game.distribute;
           this.game.allIndices = game.allIndices;
           this.game.currentPlayer = game.currentPlayer;
           this.game.playedCards = game.playedCards;
@@ -90,31 +53,7 @@ export class GameComponent implements OnInit {
       console.log('game in component after subscription', this.game);
     });
 
-    setTimeout(() => { this.distribute = false }, 4000);
-  }
-
-
-  newGame() {
-    this.game = new Game();
-    // console.log(this.game);
-  }
-  reset() {
-    this.game = new Game();
-    this.saveGame();
-  }
-
-
-  takeCard(index: number) {
-    if (!this.game.isTaken[index]) {
-      this.game.currentFace = this.game.stack[index].face;
-      this.game.playedIndices.push(index);
-      this.game.isTaken[index] = true;
-      console.log('index: ', index, 'card: ', this.game.currentFace);
-      //shifts the list of players to position current player on top
-      this.game.players.push( this.game.players.shift());
-      this.saveGame();
-      console.log('player', this.game.currentPlayer);
-    }
+    setTimeout(() => { this.game.distribute = false }, 4000);
   }
 
 
@@ -127,6 +66,30 @@ export class GameComponent implements OnInit {
   }
 
 
+  reset() {
+    this.game = new Game();
+    // this.game.distribute = true;
+    this.saveGame();
+    setTimeout(() => { this.game.distribute = false }, 4000);
+    this.saveGame();
+  }
+
+
+  takeCard(index: number) {
+    if (!this.game.isTaken[index]) {
+      this.game.currentFace = this.game.stack[index].face;
+      this.game.playedIndices.push(index);
+      this.game.isTaken[index] = true;
+      console.log('index: ', index, 'card: ', this.game.currentFace);
+      //shifts the list of players to move current player to top
+      if (this.game.players.length > 1) {
+        this.game.players.push(this.game.players.shift());
+      }
+      this.saveGame();
+      console.log('player', this.game.currentPlayer);
+    }
+  }
+
 
   addDialog(): void {
     const addPlayerDialogRef = this.dialog.open(DialogAddPlayerComponent);
@@ -134,13 +97,15 @@ export class GameComponent implements OnInit {
     addPlayerDialogRef.afterClosed().subscribe((data) => {
       console.log(data);
       if (data.playerName) {
-        this.game.players.push({ 'playerName': data.playerName, 'avatar': data.selectedAvatar
-});
+        this.game.players.push({
+          'playerName': data.playerName, 'avatar': data.selectedAvatar
+        });
         this.saveGame();
       }
     });
   }
 
 
-  editDialog(): void { }
+  shareDialog(): void { }
+
 }

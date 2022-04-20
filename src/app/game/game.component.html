@@ -1,13 +1,12 @@
 <app-player-section class="player-section" [game]="game"></app-player-section>
 
-<div class="table">
+<div class="table background">
     <div class="card-circle">
         <div *ngFor="let card of game.stack;let i = index;" (click)="takeCard(i)" class="card"
-            [ngClass]="{'distribute-card':distribute, 'taking-card':game.currentFace == card.face,'card-taken':game.isTaken[i]}"
+            [ngClass]="{'distribute-card':game.distribute, 'taking-card':game.currentFace == card.face ,'card-taken':game.isTaken[i]}"
             [style.--animation-delay]="i * 50 + 'ms'" [style.--orgDegrees]="card.orgDegrees+ 'deg'"
             [style.--level]="game.playedIndices.indexOf(i)" [style.--degrees]="card.degrees+'deg'"
-            [style.--interDegrees]="card.interDegrees+'deg'" [style.--XOffset]="card.XOffset+'px'"
-            [style.--YOffset]="card.YOffset+'px'">
+            [style.--XOffset]="card.XOffset+'px'" [style.--YOffset]="card.YOffset+'px'">
             <div class="card-back">
                 <img src="assets/img/cards/card_cover_red.png">
             </div>
@@ -22,20 +21,30 @@
         <app-action-text [card]="game.currentFace" [players]="game.players"> </app-action-text>
 
         <div class="btn-group">
-            <button mat-fab color="basic" (click)="addDialog()" matTooltip="add a player" >
+            <button mat-fab color="basic" (click)="addDialog()" matTooltip="add a player">
                 <mat-icon>person_add</mat-icon>
             </button>
-            <button mat-fab color="basic" (click)="editDialog()" matTooltip="share game">
+            <button mat-fab color="basic" (click)="shareDialog()" matTooltip="share game">
                 <mat-icon>share</mat-icon>
             </button>
             <button mat-fab color="basic" (click)="reset()" matTooltip="start new game">
                 <mat-icon>refresh</mat-icon>
             </button>
+            <button mat-fab color="basic" [matMenuTriggerFor]="menu" matTooltip="show menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+
+            <mat-menu #menu="matMenu">
+                <a mat-menu-item routerLink="/imprint">
+                    <span>Imprint</span>
+                </a>
+                <a mat-menu-item routerLink="/privacy">
+                    <span>Privacy</span>
+                </a>
+            </mat-menu>
+
         </div>
     </div>
-
-    <div>Avatar Icons created by <a href="https://www.iconfinder.com/firststyles">First Styles</a> </div>
-
-    <a href="https://www.freevector.com/playing-cards-vector">FreeVector.com</a>
 
 </div>

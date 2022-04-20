@@ -1,4 +1,5 @@
 export class Game {
+    public distribute = true;
     public players: any[] = [];
     public stack: any[] = [];
     public playedCards: string[] = [];
@@ -54,6 +55,7 @@ export class Game {
 
     public toJson() {
         return {
+            distribute: this.distribute,
             players: this.players,
             stack: this.stack,
             playedCards: this.playedCards,
