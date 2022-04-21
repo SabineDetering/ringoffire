@@ -1,4 +1,5 @@
 .player {
+    position:relative;
     display: flex;
     align-items: center;
     background-color: #f98c30;
@@ -6,6 +7,7 @@
     margin-bottom:10px;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
+    z-index: 200;
 
     span {
         font-size: 24px;

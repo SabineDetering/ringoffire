@@ -28,6 +28,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { DialogEditPlayerComponent } from './dialog-edit-player/dialog-edit-player.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
     ActionTextComponent,
     PlayerSectionComponent,
     ImprintComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    DialogEditPlayerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,33 +1,19 @@
-.table {
-    // width: 100vw;
-    // height: 100vh;
-    // max-width: 100%;
-    overflow-y: hidden;
-    // background: url('../../assets/img/wood.jpg'),
-    //     #564946;
-    // background-blend-mode: overlay;
-    // display:flex;
-    // flex-direction: column;
-    // justify-content: flex-end;
-}
-
 .player-section {
     position: absolute;
     top: 40px;
     right: 0;
-    width:270px;
-    display:flex;
+    width: 270px;
+    display: flex;
     flex-direction: column;
     align-items: flex-end;
-    max-height:540px;
-    overflow:scroll;
-    overflow-x:hidden;
+    max-height: 540px;
+    overflow: scroll;
+    overflow-x: hidden;
     overflow-y: overlay;
 }
 
 .card-circle {
     position: relative;
-    // justify-self: flex-start;
 }
 
 .card {
@@ -131,7 +117,6 @@
     z-index: var(--level);
     transform: rotate(var(--degrees)) translateX(var(--XOffset)) translateY(var(--YOffset)) rotateX(-180deg);
 }
-
 
 
 .pin-bottom {
