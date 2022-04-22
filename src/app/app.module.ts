@@ -30,6 +30,8 @@ import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { DialogEditPlayerComponent } from './dialog-edit-player/dialog-edit-player.component';
 import { ShiftPlayersPipe } from 'src/pipes/shiftPlayers.pipe';
+import { DialogShareComponent } from './dialog-share/dialog-share.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { ShiftPlayersPipe } from 'src/pipes/shiftPlayers.pipe';
     ImprintComponent,
     PrivacyComponent,
     DialogEditPlayerComponent,
-    ShiftPlayersPipe
+    ShiftPlayersPipe,
+    DialogShareComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { ShiftPlayersPipe } from 'src/pipes/shiftPlayers.pipe';
     MatButtonToggleModule,
     MatMenuModule,
     AngularFireModule.initializeApp(environment.firebase),
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

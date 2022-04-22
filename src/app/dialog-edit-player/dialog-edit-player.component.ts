@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatIcon } from '@angular/material/icon';
 import { Player } from 'src/models/player.class';
 import { DialogData } from '../player/player.component';
 
@@ -9,7 +10,8 @@ import { DialogData } from '../player/player.component';
   styleUrls: ['./dialog-edit-player.component.scss']
 })
 export class DialogEditPlayerComponent implements OnInit {
-  player:Player;
+  player: Player;
+  selectedAvatar: 'girl-long-hair.png';
 
   avatars: string[] = [
     'girl-long-hair.png',

@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { throttle } from 'rxjs/operators';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DialogShareComponent } from '../dialog-share/dialog-share.component';
 
 @Component({
   selector: 'app-game',
@@ -23,7 +24,7 @@ export class GameComponent implements OnInit {
   game: Game;
   gameId: string;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     console.log('page loaded');
@@ -105,6 +106,8 @@ export class GameComponent implements OnInit {
   }
 
 
-  shareDialog(): void { }
+  shareDialog(): void {
+    const shareDialogRef = this.dialog.open(DialogShareComponent);
+  }
 
 }

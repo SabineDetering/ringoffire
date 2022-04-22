@@ -12,7 +12,7 @@
 
         <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar" [value]="standardAvatar">
 
-            <mat-button-toggle class="avatar-btn" *ngFor="let avatar of avatars" value="{{ avatar }}">
+            <mat-button-toggle class="avatar-btn" *ngFor="let avatar of avatars;let i=index" value="{{avatar}}" focus="i===0" >
                 <img src="assets/img/profile-pics/{{ avatar }}">
             </mat-button-toggle>
 

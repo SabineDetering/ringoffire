@@ -8,7 +8,7 @@
             [(ngModel)]="player.playerName" required id="">
     </mat-form-field>
     <div class="avatar-radio">
-        <label *ngFor="let avatar of avatars">
+        <label *ngFor="let avatar of avatars;let i=index;">
             <input type="radio" name="avatar" [(ngModel)]="player.avatar" [checked]="avatar == player.avatar"
                 [value]="avatar">
             <img src="assets/img/profile-pics/{{ avatar }}">
