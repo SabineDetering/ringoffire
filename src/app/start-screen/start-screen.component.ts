@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Game } from 'src/models/game';
+import { Game } from 'src/models/game.class';
 
 @Component({
   selector: 'app-start-screen',

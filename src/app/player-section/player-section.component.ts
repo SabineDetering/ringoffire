@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Game } from 'src/models/game';
+import { Game } from 'src/models/game.class';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { GameComponent } from '../game/game.component';

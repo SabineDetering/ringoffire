@@ -10,7 +10,7 @@
 
         <p>Please choose an avatar</p>
 
-        <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar" >
+        <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar" [value]="standardAvatar">
 
             <mat-button-toggle class="avatar-btn" *ngFor="let avatar of avatars" value="{{ avatar }}">
                 <img src="assets/img/profile-pics/{{ avatar }}">

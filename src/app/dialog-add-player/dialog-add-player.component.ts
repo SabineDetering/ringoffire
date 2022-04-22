@@ -20,6 +20,7 @@ export class DialogAddPlayerComponent implements OnInit {
     'man-beard.png',
     'man-bold.png'
   ]
+  standardAvatar = this.avatars[0];
 
   constructor(private formBuilder: FormBuilder, private addPlayerDialogRef: MatDialogRef<DialogAddPlayerComponent>) {
     this.form = this.formBuilder.group({ playerName: '', selectedAvatar: '' })

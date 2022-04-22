@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Game } from 'src/models/game';
+import { Game } from 'src/models/game.class';
 import { DialogEditPlayerComponent } from '../dialog-edit-player/dialog-edit-player.component';
 
 export interface DialogData {

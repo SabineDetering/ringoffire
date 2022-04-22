@@ -1,17 +1,15 @@
-
-*{
+* {
     margin: 0;
 }
 
 html,
 body {
     height: 100%;
-    overflow-y:overlay  ;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 body {
-       font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -45,15 +43,19 @@ body {
 
     width: 100vw;
     max-width: 100%;
-    min-height:100%;
-    border:1px transparent solid;
+    height: 100vh;
+    border: 1px transparent solid;
+    box-sizing: border-box;
 }
 
 .content {
-    margin: 64px 32px;
-    padding: 16px;
+    margin: 5vh;
+    padding: 32px;
     background-color: #564946be;
     color: white;
+    height: 90vh;
+    box-sizing: border-box;
+    overflow-y: auto;
 
     a {
         color: #bababa;

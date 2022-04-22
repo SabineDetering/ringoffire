@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Player } from 'src/models/player.class';
 
 @Component({
   selector: 'app-action-text',
@@ -25,7 +26,7 @@ export class ActionTextComponent implements OnInit, OnChanges {
   title = '';
   description = '';
   @Input() card: string;
-  @Input() players: string[];
+  @Input() players: Player[];
 
   constructor() { }
 

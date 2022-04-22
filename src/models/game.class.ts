@@ -1,6 +1,8 @@
+import { Player } from "./player.class";
+
 export class Game {
     public distribute = true;
-    public players: any[] = [];
+    public players: Player[] = [];
     public stack: any[] = [];
     public playedCards: string[] = [];
     public playedIndices: number[] = [];

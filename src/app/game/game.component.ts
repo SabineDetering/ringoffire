@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from 'src/models/game';
+import { Game } from 'src/models/game.class';
+import { Player } from 'src/models/player.class';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { trigger, state, style, animate, transition, keyframes, query, stagger, useAnimation } from '@angular/animations';
-import { takeCardAnimation } from 'src/models/animation';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
