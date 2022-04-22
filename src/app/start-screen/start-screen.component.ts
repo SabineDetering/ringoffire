@@ -15,9 +15,12 @@ export class StartScreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+
+  /**
+   * start new game
+   * navigate to page with concatenated gameId
+   */
   newGame() {
-    //start new game
     let game = new Game();
     // new game is store in firestore, id from answer is appended to url to identify current game
     this.firestore.collection('games')
@@ -25,7 +28,5 @@ export class StartScreenComponent implements OnInit {
       .then((gameInfo: any) => {
         this.router.navigateByUrl('/game/' + gameInfo.id);
       });
-
   }
-
 }

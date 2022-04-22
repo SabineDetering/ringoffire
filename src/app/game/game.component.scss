@@ -12,6 +12,29 @@
     overflow-y: overlay;
 }
 
+.game-over {
+    position: absolute;
+    z-index:200;
+    top: 50vh;
+    left:50vw;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 50vw;
+        min-width: 330px;
+        max-width: 560px;
+        height: auto;
+    }
+
+    span {
+        position: absolute;
+        font-size: 52px;
+    }
+}
+
 .card-circle {
     position: relative;
 }

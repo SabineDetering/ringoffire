@@ -1,7 +1,9 @@
 <h1 mat-dialog-title>
     Invite your friends
 </h1>
+
 <p>Click on the button to copy the link and share it with your friends</p>
+
 <mat-dialog-content class="share">
     <span>{{ path }}</span>
     <button mat-flat-button [cdkCopyToClipboard]="path" matTooltip="copy url">
@@ -9,5 +11,4 @@
             content_copy
         </mat-icon>
     </button>
-
 </mat-dialog-content>

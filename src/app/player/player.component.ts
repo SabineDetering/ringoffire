@@ -28,6 +28,12 @@ export class PlayerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  /**
+   * calls a dialog to edit a player
+   * name and avatar can be changed or player be deleted completely
+   * @param index - index of player in players
+   */
   editPlayer(index): void {
     let dialogRef = this.dialog.open(DialogEditPlayerComponent,
       {
@@ -48,6 +54,9 @@ export class PlayerComponent implements OnInit {
   }
 
 
+  /**
+   * save game to firestore
+   */
   saveGame() {
     console.log('firestore', this.firestore, ' gameId: ', this.gameId, ' players: ', this.game.players)
     this

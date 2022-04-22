@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 
@@ -29,10 +28,10 @@ export class DialogAddPlayerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   submit(form) {
     this.addPlayerDialogRef.close(`${form.value}`);
     console.log('submit ', form.value);
-
   }
 
 }

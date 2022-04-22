@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatIcon } from '@angular/material/icon';
 import { Player } from 'src/models/player.class';
 import { DialogData } from '../player/player.component';
 
@@ -28,5 +27,4 @@ export class DialogEditPlayerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

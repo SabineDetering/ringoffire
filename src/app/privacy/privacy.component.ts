@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 })
 export class PrivacyComponent implements OnInit {
 
-  constructor(private location:Location) { }
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
   }

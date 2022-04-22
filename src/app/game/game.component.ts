@@ -1,24 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game.class';
-import { Player } from 'src/models/player.class';
 import { MatDialog } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { MatMenuModule } from '@angular/material/menu';
-import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { trigger, state, style, animate, transition, keyframes, query, stagger, useAnimation } from '@angular/animations';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { throttle } from 'rxjs/operators';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogShareComponent } from '../dialog-share/dialog-share.component';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
-  })
+})
 
 export class GameComponent implements OnInit {
   game: Game;
@@ -26,6 +20,11 @@ export class GameComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog) { }
 
+
+  /**
+   * initialises game and subscribes updates from firestore
+   * timeout to mark when distribution of cards is completed
+   */
   ngOnInit(): void {
     console.log('page loaded');
     this.game = new Game();
@@ -42,22 +41,24 @@ export class GameComponent implements OnInit {
         .subscribe((game: any) => {
           console.log('game update from firestore', game);
           this.game.distribute = game.distribute;
-          this.game.allIndices = game.allIndices;
           this.game.currentPlayer = game.currentPlayer;
-          this.game.playedCards = game.playedCards;
           this.game.playedIndices = game.playedIndices;
           this.game.players = game.players;
           this.game.stack = game.stack;
           this.game.isTaken = game.isTaken;
           this.game.currentFace = game.currentFace;
+          this.game.gameOver = game.gameOver;
         });
-      console.log('game in component after subscription', this.game);
+      console.log('game: ', this.game);
     });
-
+    // distribution of cards is completed
     setTimeout(() => { this.game.distribute = false }, 4000);
   }
 
 
+  /**
+   * save game to firestore
+   */
   saveGame() {
     this
       .firestore
@@ -67,17 +68,28 @@ export class GameComponent implements OnInit {
   }
 
 
+  /**
+   * start new game, players stay
+   */
   reset() {
     let players = this.game.players;
     this.game = new Game();
     this.game.players = players;
-    // this.game.distribute = true;
     this.saveGame();
     setTimeout(() => { this.game.distribute = false }, 4000);
     this.saveGame();
   }
 
 
+  /**
+   * set currentFace to taken cards face
+   * save taken index in playedIndices
+   * setting isTaken true starts takeCardAnimation
+   * currentPlayer is changed to the next player in the row
+   * save game
+   * when all cards are taken: initiate showing gameOver image
+   * @param index - index of taken card
+   */
   takeCard(index: number) {
     if (!this.game.isTaken[index]) {
       this.game.currentFace = this.game.stack[index].face;
@@ -87,10 +99,20 @@ export class GameComponent implements OnInit {
       this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
       this.saveGame();
       console.log('player', this.game.currentPlayer);
+      if (this.game.playedIndices.length == 52) {
+        setTimeout(() => {
+          this.game.currentFace = '';
+          this.game.gameOver = true;
+          this.saveGame();
+        }, 3000);
+      }
     }
   }
 
 
+  /**
+   * calls dialog to add a new player
+   */
   addDialog(): void {
     const addPlayerDialogRef = this.dialog.open(DialogAddPlayerComponent);
 
@@ -106,8 +128,11 @@ export class GameComponent implements OnInit {
   }
 
 
+  /**
+   * calls a dialog to facilitate copying the url of the game
+   */
   shareDialog(): void {
-    const shareDialogRef = this.dialog.open(DialogShareComponent);
+     this.dialog.open(DialogShareComponent);
   }
 
 }

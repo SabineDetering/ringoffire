@@ -15,7 +15,7 @@ export class ImprintComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+
   /**
    * go back to previous page
    */
