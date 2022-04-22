@@ -27,10 +27,4 @@ export class DialogEditPlayerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  savePlayer(value: any) {
-    console.log(value);
-    this.player = value;
-    console.log(value);
-  }
 }

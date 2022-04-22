@@ -1,3 +1,4 @@
-<app-player *ngFor="let player of game.players;let index=index" [ngStyle]="{'top.px':50 + (90 * index)}"
-    [playerActive]="index==game.currentPlayer" [player]="player" [index]="index" [game]="game">
+<app-player *ngFor="let player of game.players|shiftPlayers:game.currentPlayer;let i=index"
+    [ngStyle]="{'top.px':50 + (90 * i)}" [playerActive]="player==game.players[game.currentPlayer]" [player]="player"
+    [indexofPlayer]="game.players.indexOf(player)" [game]="game">
 </app-player>

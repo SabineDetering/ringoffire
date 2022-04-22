@@ -29,6 +29,7 @@ import { environment } from 'src/environments/environment';
 import { ImprintComponent } from './imprint/imprint.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { DialogEditPlayerComponent } from './dialog-edit-player/dialog-edit-player.component';
+import { ShiftPlayersPipe } from 'src/pipes/shiftPlayers.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DialogEditPlayerComponent } from './dialog-edit-player/dialog-edit-play
     PlayerSectionComponent,
     ImprintComponent,
     PrivacyComponent,
-    DialogEditPlayerComponent
+    DialogEditPlayerComponent,
+    ShiftPlayersPipe
   ],
   imports: [
     BrowserModule,

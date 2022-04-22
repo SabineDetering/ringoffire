@@ -16,7 +16,7 @@ export interface DialogData {
 export class PlayerComponent implements OnInit {
   @Input() player: any;
   @Input() playerActive: boolean = false;
-  @Input() index: number;
+  @Input() indexofPlayer: number;
   @Input() game: Game;
 
 
@@ -40,6 +40,7 @@ export class PlayerComponent implements OnInit {
         this.player = change;
       }
     })
+    // this.game.saveGame();
   }
 
 }

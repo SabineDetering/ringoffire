@@ -67,7 +67,9 @@ export class GameComponent implements OnInit {
 
 
   reset() {
+    let players = this.game.players;
     this.game = new Game();
+    this.game.players = players;
     // this.game.distribute = true;
     this.saveGame();
     setTimeout(() => { this.game.distribute = false }, 4000);
@@ -81,10 +83,7 @@ export class GameComponent implements OnInit {
       this.game.playedIndices.push(index);
       this.game.isTaken[index] = true;
       console.log('index: ', index, 'card: ', this.game.currentFace);
-      //shifts the list of players to move current player to top
-      if (this.game.players.length > 1) {
-        this.game.players.push(this.game.players.shift());
-      }
+      this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
       this.saveGame();
       console.log('player', this.game.currentPlayer);
     }
