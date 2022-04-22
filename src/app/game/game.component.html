@@ -26,7 +26,7 @@
     <!-- instructions and buttons -->
     <div class="pin-bottom">
 
-        <app-action-text [card]="game.currentFace" [players]="game.players"> </app-action-text>
+        <app-action-text class="action-text" [card]="game.currentFace" [players]="game.players"> </app-action-text>
 
         <div class="btn-group">
             <button mat-fab color="basic" (click)="addDialog()" matTooltip="add a player">

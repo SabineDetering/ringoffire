@@ -1,12 +1,11 @@
 .player-section {
     position: absolute;
-    top: 40px;
+    top: 5vh;
     right: 0;
-    width: 270px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    max-height: 540px;
+    max-height: 80vh;
     overflow: scroll;
     overflow-x: hidden;
     overflow-y: overlay;
@@ -14,9 +13,9 @@
 
 .game-over {
     position: absolute;
-    z-index:200;
+    z-index: 200;
     top: 50vh;
-    left:50vw;
+    left: 50vw;
     transform: translateX(-50%) translateY(-50%);
     display: flex;
     justify-content: center;
@@ -37,11 +36,13 @@
 
 .card-circle {
     position: relative;
+    height: 100vh;
+    width: calc(100vw - 250px);
 }
 
 .card {
     position: absolute;
-    left: 50vh;
+    left: 50%;
     top: 37.5vh;
     height: 20vh;
     width: calc(20vh / 726 * 500);
@@ -144,10 +145,30 @@
 
 .pin-bottom {
     position: absolute;
-    bottom: 32px;
-    left: 80px;
-    right: 80px;
+    bottom:1vh;
+    left: 0;
+    right: 0;
+    min-height:112px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 16px;
+
+    .action-text {
+        margin-left: 5vw;
+        width:calc(90vw - 112px - 16px);
+        min-height:100px;
+    }
+    .btn-group{
+        max-width:112px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    @media(max-width:600px){
+        bottom: 0;
+        .action-text {
+            margin-left: 0;
+            width: calc(100vw - 2 * 56px);
+        }
+    }
 }
