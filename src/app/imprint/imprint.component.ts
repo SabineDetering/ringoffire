@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-imprint',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImprintComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private location: Location) { }
+
 
   ngOnInit(): void {
   }
 
+  
+  /**
+   * go back to previous page
+   */
+  goBack() {
+    this.location.back();
+  }
 }

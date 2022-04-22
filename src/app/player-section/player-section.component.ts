@@ -13,9 +13,10 @@ export class PlayerSectionComponent implements OnInit {
 
   @Input() game: Game;
 
+
   constructor(private comp:GameComponent) { }
+
 
   ngOnInit(): void {
   }
-
 }

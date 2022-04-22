@@ -95,7 +95,7 @@ export class GameComponent implements OnInit {
 
     addPlayerDialogRef.afterClosed().subscribe((data) => {
       console.log(data);
-      if (data.playerName) {
+      if (data) {
         this.game.players.push({
           'playerName': data.playerName, 'avatar': data.selectedAvatar
         });
