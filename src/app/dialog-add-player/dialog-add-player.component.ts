@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { Component,  OnInit } from '@angular/core';
+import { MatDialogRef } from "@angular/material/dialog";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-dialog-add-player',
