@@ -87,10 +87,10 @@ export class GameComponent implements OnInit {
   /**
    * sets currentFace to taken cards face (triggers takeCardAnimation)
    * saves taken index in playedIndices (used to "staple" played cards in correct order)
-   * sets isTaken true () starts takeCardAnimation
+   * sets isTaken true (after takeCardAnimation animation) (fixes card in the middle and disables onclick)
    * currentPlayer is changed to the next player in the row
-   * save game
-   * when all cards are taken: initiate showing gameOver image
+   * saves game
+   * when all cards are taken: initiates showing gameOver image
    * @param index - index of taken card
    */
   takeCard(index: number) {
@@ -151,5 +151,4 @@ export class GameComponent implements OnInit {
   shareDialog(): void {
     this.dialog.open(DialogShareComponent);
   }
-
 }

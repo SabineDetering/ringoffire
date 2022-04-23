@@ -1,3 +1,7 @@
+.dialog {
+    overflow: auto;
+}
+
 .avatar-radio {
     input[type="radio"] {
         /* Add if not using autoprefixer */
@@ -36,6 +40,12 @@
         object-position: center;
         border-radius: 50%;
         border: 1px solid rgb(224, 224, 224);
+
+        @media (max-height:600px) {
+            margin-top: 0;
+            width: 40px;
+            height: 40px;
+        }
     }
 
 }
