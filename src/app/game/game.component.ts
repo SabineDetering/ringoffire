@@ -96,7 +96,9 @@ export class GameComponent implements OnInit {
       this.game.playedIndices.push(index);
       this.game.isTaken[index] = true;
       console.log('index: ', index, 'card: ', this.game.currentFace);
-      this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
+      if (this.game.players.length>0){
+        this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
+      }
       this.saveGame();
       console.log('player', this.game.currentPlayer);
       if (this.game.playedIndices.length == 52) {
