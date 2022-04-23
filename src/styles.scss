@@ -62,3 +62,15 @@ body {
         color: #bababa;
     }
 }
+
+@media(max-height:600px) {
+    .hide-low-screen {
+        display: none;
+    }
+}
+
+@media(min-height:600px) {
+    .hide-high-screen {
+        display: none;
+    }
+}

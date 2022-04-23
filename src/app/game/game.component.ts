@@ -104,7 +104,7 @@ export class GameComponent implements OnInit {
           this.game.currentFace = '';
           this.game.gameOver = true;
           this.saveGame();
-        }, 3000);
+        }, 4000);
       }
     }
   }

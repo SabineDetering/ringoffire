@@ -26,21 +26,41 @@
     <!-- instructions and buttons -->
     <div class="pin-bottom">
 
-        <app-action-text class="action-text" [card]="game.currentFace" [players]="game.players"> </app-action-text>
+        <app-action-text class="action-text" [card]="game.currentFace" [players]="game.players" 
+        [gameOver]="game.gameOver"> </app-action-text>
 
         <div class="btn-group">
-            <button mat-fab color="basic" (click)="addDialog()" matTooltip="add a player">
-                <mat-icon>person_add</mat-icon>
-            </button>
-            <button mat-fab color="basic" (click)="shareDialog()" matTooltip="share game">
-                <mat-icon>share</mat-icon>
-            </button>
-            <button mat-fab color="basic" (click)="reset()" matTooltip="start new game">
-                <mat-icon>refresh</mat-icon>
-            </button>
-            <button mat-fab color="basic" [matMenuTriggerFor]="menu" matTooltip="show menu">
-                <mat-icon>menu</mat-icon>
-            </button>
+            <!-- big buttons for high screens -->
+            <div class="hide-low-screen">
+                <button mat-fab color="basic" (click)="addDialog()" matTooltip="add a player">
+                    <mat-icon>person_add</mat-icon>
+                </button>
+                <button mat-fab color="basic" (click)="shareDialog()" matTooltip="share game">
+                    <mat-icon>share</mat-icon>
+                </button>
+                <button mat-fab color="basic" (click)="reset()" matTooltip="start new game">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+                <button mat-fab color="basic" [matMenuTriggerFor]="menu" matTooltip="show menu">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+
+            <!-- small buttons for low screens -->
+            <div class="hide-high-screen">
+                <button mat-mini-fab color="basic" (click)="addDialog()" matTooltip="add a player">
+                    <mat-icon>person_add</mat-icon>
+                </button>
+                <button mat-mini-fab color="basic" (click)="shareDialog()" matTooltip="share game">
+                    <mat-icon>share</mat-icon>
+                </button>
+                <button mat-mini-fab color="basic" (click)="reset()" matTooltip="start new game">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+                <button mat-mini-fab color="basic" [matMenuTriggerFor]="menu" matTooltip="show menu">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
 
 
             <mat-menu #menu="matMenu">

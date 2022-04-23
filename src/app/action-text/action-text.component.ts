@@ -27,19 +27,29 @@ export class ActionTextComponent implements OnInit, OnChanges {
   description = '';
   @Input() card: string;
   @Input() players: Player[];
+  @Input() gameOver: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+  /**
+   * displays the text according to the current card or other instructions
+   */
   ngOnChanges(): void {
     if (this.card) {
       let currentType = +this.card.split('_')[0];
       this.title = this.actions[currentType - 1].title;
       this.description = this.actions[currentType - 1].description;
-    } else if (this.players.length == 0) {
+    } else if (this.gameOver) {
+      this.title = "Game over!"
+      this.description = 'Do you want more? Then start a new game!';
+    }
+    else if (this.players.length == 0) {
       this.title = 'Add a player';
-      this.description = 'Please add a player by clicking on the + button.';
+      this.description = 'Please add a player by clicking on the first button.';
     } else if (this.players.length == 1) {
       this.title = "Drinking alone isn't really fun";
       this.description = 'Add more players! You can play with friends all over the world by sharing the URL of the game. ';
