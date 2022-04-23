@@ -13,3 +13,46 @@
         padding-top:12px;
     }
 }
+
+
+.avatar-radio {
+    input[type="radio"] {
+        /* Add if not using autoprefixer */
+        -webkit-appearance: none;
+        appearance: none;
+        /* For iOS < 15 to remove gradient background */
+        background-color: #fff;
+        /* Not removed via appearance */
+        margin: 0;
+    }
+
+    label {
+
+        &:focus-within {
+            img {
+                background-color: rgb(224, 224, 224);
+                border: 1px solid rgb(117, 117, 117);
+            }
+        }
+    }
+
+    .checked {
+        background-color: rgb(224, 224, 224);
+        border: 1px solid rgb(117, 117, 117);
+    }
+    
+    label+label {
+        margin-right: 4px;
+    }
+
+    img {
+        margin-top: 12px;
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        border: 1px solid rgb(224, 224, 224);
+    }
+
+}

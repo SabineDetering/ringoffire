@@ -10,17 +10,24 @@
 
     <p>Please choose an avatar</p>
 
-    <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar" [value]="standardAvatar">
+    <div class="avatar-radio" >
+        <label *ngFor="let avatar of avatars;let i=index;">
+            <input type="radio" name="avatar" [value]="avatar" formControlName="avatar">
+            <img [class.checked]="form.value.avatar==avatar"  src="assets/img/profile-pics/{{ avatar }}">
+        </label>
+    </div>
+
+    <!-- <mat-button-toggle-group formControlName="selectedAvatar" aria-label="Select Avatar" [value]="standardAvatar">
         <mat-button-toggle class="avatar-btn" *ngFor="let avatar of avatars;let i=index" value="{{avatar}}"
             focus="i===0">
             <img src="assets/img/profile-pics/{{ avatar }}">
         </mat-button-toggle>
-    </mat-button-toggle-group>
+    </mat-button-toggle-group> -->
 
 </mat-dialog-content>
 
 <div mat-dialog-actions>
     <button mat-button mat-dialog-close>No Thanks</button>
-    <button mat-button [disabled]="form.value.playerName.length==0||form.value.selectedAvatar==''"
+    <button mat-button [disabled]="form.value.playerName.length==0||form.value.avatar==''"
         [mat-dialog-close]="form.value">Ok</button>
 </div>

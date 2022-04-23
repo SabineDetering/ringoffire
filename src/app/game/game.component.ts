@@ -120,7 +120,8 @@ export class GameComponent implements OnInit {
       console.log(data);
       if (data) {
         this.game.players.push({
-          'playerName': data.playerName, 'avatar': data.selectedAvatar
+          'playerName': data.playerName,
+          'avatar': data.avatar
         });
         this.saveGame();
       }

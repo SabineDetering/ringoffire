@@ -3,16 +3,15 @@
 </h1>
 <form novalidate #form="ngForm">
 
-    <mat-form-field class="form-group" >
-        <input matInput type="text" class="form-control" name="playerName" 
-            [(ngModel)]="player.playerName" required id="">
+    <mat-form-field class="form-group">
+        <input matInput type="text" class="form-control" name="playerName" [(ngModel)]="player.playerName" required
+            id="">
     </mat-form-field>
 
     <div class="avatar-radio">
         <label *ngFor="let avatar of avatars;let i=index;">
-            <input type="radio" name="avatar" [(ngModel)]="player.avatar" [checked]="avatar == player.avatar"
-                [value]="avatar">
-            <img src="assets/img/profile-pics/{{ avatar }}">
+            <input type="radio" name="avatar" [(ngModel)]="player.avatar" [value]="avatar">
+            <img [class.checked]="player.avatar==avatar" src="assets/img/profile-pics/{{ avatar }}">
         </label>
     </div>
 

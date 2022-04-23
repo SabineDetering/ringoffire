@@ -21,7 +21,7 @@ export class DialogEditPlayerComponent implements OnInit {
     'man-bold.png'
   ]
   constructor(public dialogRef: MatDialogRef<DialogEditPlayerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.player = data;
   }
 

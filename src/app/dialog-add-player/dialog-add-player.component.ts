@@ -19,19 +19,13 @@ export class DialogAddPlayerComponent implements OnInit {
     'man-beard.png',
     'man-bold.png'
   ]
+
   standardAvatar = this.avatars[0];
 
   constructor(private formBuilder: FormBuilder, private addPlayerDialogRef: MatDialogRef<DialogAddPlayerComponent>) {
-    this.form = this.formBuilder.group({ playerName: '', selectedAvatar: '' })
+    this.form = this.formBuilder.group({ playerName: '', avatar: this.standardAvatar })
   }
 
   ngOnInit(): void {
   }
-
-
-  submit(form) {
-    this.addPlayerDialogRef.close(`${form.value}`);
-    console.log('submit ', form.value);
-  }
-
 }

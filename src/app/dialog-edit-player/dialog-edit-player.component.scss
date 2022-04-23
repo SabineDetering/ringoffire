@@ -19,7 +19,12 @@
         }
     }
 
-    label+label{
+    .checked {
+        background-color: rgb(224, 224, 224);
+        border: 1px solid rgb(117, 117, 117);
+    }
+
+    label+label {
         margin-right: 4px;
     }
 
