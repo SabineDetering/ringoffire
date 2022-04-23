@@ -9,7 +9,7 @@
 <div class="table background">
     <div class="card-circle">
         <div *ngFor="let card of game.stack;let i = index;" (click)="takeCard(i)" class="card"
-            [ngClass]="{'distribute-card':game.distribute, 'taking-card':game.currentFace == card.face ,'card-taken':game.isTaken[i]}"
+            [ngClass]="{'distribute-card':game.distribute, 'taking-card':game.currentFace == card.face && !game.isTaken[i] ,'card-taken':game.isTaken[i]}"
             [style.--animation-delay]="i * 50 + 'ms'" [style.--orgDegrees]="card.orgDegrees+ 'deg'"
             [style.--level]="game.playedIndices.indexOf(i)" [style.--degrees]="card.degrees+'deg'"
             [style.--XOffset]="card.XOffset+'px'" [style.--YOffset]="card.YOffset+'px'">
@@ -24,10 +24,10 @@
 
 
     <!-- instructions and buttons -->
-    <div class="pin-bottom">
+    <div class="pin-bottom" [class.hidden]="actionTextHidden">
 
-        <app-action-text class="action-text" [card]="game.currentFace" [players]="game.players" 
-        [gameOver]="game.gameOver"> </app-action-text>
+        <app-action-text class="action-text"  [card]="game.currentFace"
+            [players]="game.players" [gameOver]="game.gameOver" (click)="toggleHide()"> </app-action-text>
 
         <div class="btn-group">
             <!-- big buttons for high screens -->

@@ -65,12 +65,12 @@ body {
 
 @media(max-height:600px) {
     .hide-low-screen {
-        display: none;
+        display: none!important;
     }
 }
 
 @media(min-height:600px) {
     .hide-high-screen {
-        display: none;
+        display: none!important;
     }
 }

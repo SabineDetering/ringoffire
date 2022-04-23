@@ -17,6 +17,7 @@ import { DialogShareComponent } from '../dialog-share/dialog-share.component';
 export class GameComponent implements OnInit {
   game: Game;
   gameId: string;
+  actionTextHidden = false;
 
   constructor(private route: ActivatedRoute, public firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -41,7 +42,9 @@ export class GameComponent implements OnInit {
         .subscribe((game: any) => {
           console.log('game update from firestore', game);
           this.game.distribute = game.distribute;
-          this.game.currentPlayer = game.currentPlayer;
+          if (!this.game.currentPlayer == game.currentPlayer) {
+            this.game.currentPlayer = game.currentPlayer;
+          }
           this.game.playedIndices = game.playedIndices;
           this.game.players = game.players;
           this.game.stack = game.stack;
@@ -82,25 +85,28 @@ export class GameComponent implements OnInit {
 
 
   /**
-   * set currentFace to taken cards face
-   * save taken index in playedIndices
-   * setting isTaken true starts takeCardAnimation
+   * sets currentFace to taken cards face (triggers takeCardAnimation)
+   * saves taken index in playedIndices (used to "staple" played cards in correct order)
+   * sets isTaken true () starts takeCardAnimation
    * currentPlayer is changed to the next player in the row
    * save game
    * when all cards are taken: initiate showing gameOver image
    * @param index - index of taken card
    */
   takeCard(index: number) {
-    if (!this.game.isTaken[index]) {
+    if (this.game.players.length > 1 && !this.game.isTaken[index]) {
+      if (this.actionTextHidden) { this.actionTextHidden = false }
       this.game.currentFace = this.game.stack[index].face;
       this.game.playedIndices.push(index);
-      this.game.isTaken[index] = true;
       console.log('index: ', index, 'card: ', this.game.currentFace);
-      if (this.game.players.length>0){
-        this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
-      }
       this.saveGame();
-      console.log('player', this.game.currentPlayer);
+      setTimeout(() => {
+        this.game.isTaken[index] = true;
+        this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
+        console.log('player', this.game.currentPlayer);
+        this.saveGame();
+      }, 1000);
+
       if (this.game.playedIndices.length == 52) {
         setTimeout(() => {
           this.game.currentFace = '';
@@ -109,6 +115,14 @@ export class GameComponent implements OnInit {
         }, 4000);
       }
     }
+  }
+
+
+  /**
+   * hides or unhides action text to make bottom cards accessible
+   */
+  toggleHide() {
+    this.actionTextHidden = !this.actionTextHidden;
   }
 
 
@@ -135,7 +149,7 @@ export class GameComponent implements OnInit {
    * calls a dialog to facilitate copying the url of the game
    */
   shareDialog(): void {
-     this.dialog.open(DialogShareComponent);
+    this.dialog.open(DialogShareComponent);
   }
 
 }
