@@ -26,5 +26,8 @@ export class DialogEditPlayerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setInterval(() => {
+      console.log("Hallo")
+    }, 1000);
   }
 }
